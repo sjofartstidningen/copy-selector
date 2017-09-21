@@ -1,0 +1,17 @@
+{
+  "name": "Copy Selector",
+  "version": "1.0",
+  "description": "Copy inner html of a selector",
+  "content_scripts": [
+    {
+      "matches": ["http://www.sjofartstidningen.com/*"],
+      "run_at": ["document_idle"],
+      "css": ["content.css"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "http://www.sjofartstidningen.se/*"
+  ]
+}
