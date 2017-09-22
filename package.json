@@ -10,8 +10,10 @@
     "prebuild": "rimraf copy-selector/*",
     "build:js": "rollup -c",
     "build:css": "node-sass src/content.scss copy-selector/content.css",
+    "build:html": "./scripts/build-html.js",
+    "build:icons": "./scripts/build-icons.js",
     "build:manifest": "./scripts/build-manifest.js",
-    "build": "NODE_ENV=production yarn run build:js && yarn run build:css && yarn run build:manifest",
+    "build": "NODE_ENV=production ./scripts/build.sh",
     "build:js:watch": "rollup -c --watch",
     "build:css:watch": "node-sass src/content.scss copy-selector/content.css -w"
   },
