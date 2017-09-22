@@ -12,7 +12,9 @@ const plugins = [
   nodeResolve(),
   replace({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    'process.env.SELECTOR': JSON.stringify(isProd ? '.selector' : '.container'),
+    'process.env.SELECTOR': JSON.stringify(
+      isProd ? '#templateContainer > tbody > tr:nth-child(2)' : '.container',
+    ),
   }),
   babel({
     babelrc: false,

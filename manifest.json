@@ -1,11 +1,12 @@
 {
+  "manifest_version": 2,
   "name": "Copy Selector",
   "version": "1.0",
   "description": "Copy inner html of a selector",
   "content_scripts": [
     {
       "matches": ["http://www.sjofartstidningen.se/?post_type=newsletter*"],
-      "run_at": ["document_idle"],
+      "run_at": "document_idle",
       "css": ["content.css"],
       "js": ["content.js"]
     }
