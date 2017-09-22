@@ -11,8 +11,18 @@
       "js": ["content.js"]
     }
   ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "permissions": [
     "activeTab",
+    "storage",
     "http://www.sjofartstidningen.se/?post_type=newsletter*"
   ]
 }

@@ -2,9 +2,7 @@ import createElement from './lib/createElement';
 import createIcon from './lib/createIcon';
 import Messanger from './lib/Messanger';
 import Selection from './lib/Selection';
-
-const selectorToCopy = process.env.SELECTOR;
-const elToCopy = document.querySelector(selectorToCopy);
+import * as chromeSync from './lib/chromeSync';
 
 const createContainer = () => createElement('div', 'container');
 const createButton = () => createElement('button', 'button');
@@ -15,8 +13,14 @@ const createTextarea = () => createElement('textarea', 'textarea-hidden');
 const messenger = new Messanger();
 const selectionOverlay = new Selection();
 
-const onClick = () => {
+const getElToCopy = async () => {
+  const { selector } = await chromeSync.get({ selector: process.env.SELECTOR });
+  return document.querySelector(selector);
+};
+
+const onClick = async () => {
   try {
+    const elToCopy = await getElToCopy();
     if (!elToCopy) throw new Error('Could not find element to copy');
 
     const textarea = createTextarea();
@@ -44,7 +48,9 @@ const onClick = () => {
   }
 };
 
-const onEnter = () => {
+const onEnter = async () => {
+  const elToCopy = await getElToCopy();
+
   window.requestAnimationFrame(() => {
     const box = elToCopy.getBoundingClientRect();
     selectionOverlay.show(box);
@@ -55,7 +61,7 @@ const onLeave = () => {
   window.requestAnimationFrame(() => {
     selectionOverlay.hide();
   });
-}
+};
 
 function init() {
   const container = createContainer();
@@ -65,7 +71,7 @@ function init() {
   const selection = createSelection();
 
   messenger.addEl(message);
-  selectionOverlay.addEl(selection)
+  selectionOverlay.addEl(selection);
 
   button.addEventListener('click', onClick);
   button.addEventListener('mouseenter', onEnter);

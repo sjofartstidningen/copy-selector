@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copy Selector</title>
+  <style>
+    body { padding: 1rem; }
+
+    #cc-title {
+      margin-top: 0;
+    }
+
+    #cc-selector,
+    #cc-save {
+      display: inline-block;
+    }
+
+    #cc-list {
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h2 id="cc-title">Set selector:</h2>
+
+  <div>
+    <input type="text" id="cc-selector">
+    <button id="cc-save">
+      Save <span id="cc-status"></span>
+    </button>
+  </div>
+
+  <ol id="cc-list">
+    <li>
+      To choose a selector visit the page you would like to copy from and press <code>alt + cmd + I</code> on your keyboard
+    </li>
+    <li>
+      Then under <code>Elements</code> find the element you would like to copy and right-click on it.
+    </li>
+    <li>
+      Then choose <code>Copy &gt; Copy outer selector</code>
+    </li>
+  </ol>
+
+  <script src="options.js"></script>
+</body>
+</html>
