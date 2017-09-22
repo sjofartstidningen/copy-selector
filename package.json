@@ -25,7 +25,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "chalk": "^2.1.0",
-    "chrome-location": "^1.2.1",
+    "crx": "^3.2.1",
     "eslint": "^4.7.2",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-config-prettier": "^2.5.0",

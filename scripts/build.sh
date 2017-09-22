@@ -8,6 +8,6 @@ set -e
 ./scripts/build-icons.js
 ./scripts/build-manifest.js
 
-cp -rf copy-selector/* ~/Dropbox\ \(Sjöfartstidningen\)/Redaktionella\ dokument/16.\ Nyhetsbrev/copy-selector
+./node_modules/.bin/crx pack copy-selector/
 
 echo "Build done"
