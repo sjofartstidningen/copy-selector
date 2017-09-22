@@ -1,0 +1,33 @@
+{
+  "name": "copy-selector",
+  "version": "0.0.0",
+  "description": "Chrome extension that copies a selector",
+  "main": "dist/content.js",
+  "repository": "git@github.com:sjofartstidningen/copy-selector.git",
+  "author": "Adam Bergman <adam@fransvilhelm.com>",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rimraf dist/*",
+    "build:js": "rollup -c",
+    "build:css": "node-sass src/content.scss dist/content.css",
+    "build:manifest": "./scripts/build-manifest.js",
+    "build": "NODE_ENV=production yarn run build:js && yarn run build:css && yarn run build:manifest",
+    "build:js:watch": "rollup -c --watch",
+    "build:css:watch": "node-sass src/content.scss dist/content.css -w"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "chalk": "^2.1.0",
+    "chrome-location": "^1.2.1",
+    "node-sass": "^4.5.3",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^2.0.0"
+  }
+}

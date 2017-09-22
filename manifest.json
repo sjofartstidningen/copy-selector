@@ -4,7 +4,7 @@
   "description": "Copy inner html of a selector",
   "content_scripts": [
     {
-      "matches": ["http://www.sjofartstidningen.com/*"],
+      "matches": ["http://www.sjofartstidningen.se/?post_type=newsletter*"],
       "run_at": ["document_idle"],
       "css": ["content.css"],
       "js": ["content.js"]
@@ -12,6 +12,6 @@
   ],
   "permissions": [
     "activeTab",
-    "http://www.sjofartstidningen.se/*"
+    "http://www.sjofartstidningen.se/?post_type=newsletter*"
   ]
 }

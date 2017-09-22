@@ -1,40 +1,53 @@
-const selectorToCopy = '.container';
+import createElement from './lib/createElement';
+import createIcon from './lib/createIcon';
+import Messanger from './lib/Messanger';
 
-const createSelector = suffix => `cc-${suffix}`;
-const createElement = (type, className) => {
-  const el = document.createElement(type);
-  el.classList.add(createSelector(className));
-  return el;
-};
+const selectorToCopy = process.env.SELECTOR;
 
 const createContainer = () => createElement('div', 'container');
 const createButton = () => createElement('button', 'button');
+const createMessage = () => createElement('span', 'message');
+const createTextarea = () => createElement('textarea', 'textarea-hidden');
 
-const showMessage = message => console.log(message);
+const messenger = new Messanger();
 
 const onClick = () => {
-  const textarea = createElement('textarea', 'textarea-hidden');
-  const elToCopy = document.querySelector(selectorToCopy);
-  const html = elToCopy.innerHTML;
-
-  textarea.value = html;
-
-  document.body.append(textarea);
-
   try {
-    const success = document.executeCommand('copy');
-    showMessage(success ? 'Copied' : 'Could not copy');
+    const textarea = createTextarea();
+    const elToCopy = document.querySelector(selectorToCopy);
+
+    if (!elToCopy) throw new Error('Could not find element to copy');
+
+    const html = elToCopy.outerHTML;
+
+    textarea.value = html.trim();
+    document.body.append(textarea);
+    textarea.select();
+
+    const success = document.execCommand('Copy');
+    messenger.show(
+      success ? 'Copied' : 'Could not copy',
+      success ? 'success' : 'warning',
+    );
+    document.body.removeChild(textarea);
   } catch (e) {
-    showMessage('Could not copy');
+    messenger.show('An error occured, see log', 'warning');
+    console.error(e);
   }
 };
 
 function init() {
   const container = createContainer();
   const button = createButton();
+  const icon = createIcon();
+  const message = createMessage();
+  messenger.addEl(message);
 
   button.addEventListener('click', onClick);
+
+  button.appendChild(icon);
   container.appendChild(button);
+  container.appendChild(message);
   document.body.appendChild(container);
 }
 
