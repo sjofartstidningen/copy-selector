@@ -34,7 +34,7 @@ const plugins = [
 export default {
   input: 'src/content.js',
   output: {
-    file: 'dist/content.js',
+    file: 'copy-selector/content.js',
     format: 'iife',
   },
   plugins,

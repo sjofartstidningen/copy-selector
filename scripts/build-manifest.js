@@ -12,7 +12,7 @@ const newManifest = Object.assign({}, manifest, {
   version: pkg.version,
 });
 
-const manifestPath = path.join(__dirname, '..', 'dist', 'manifest.json');
+const manifestPath = path.join(__dirname, '..', 'copy-selector', 'manifest.json');
 fs.writeFile(manifestPath, JSON.stringify(newManifest, null, 2), err => {
   if (err) {
     console.error(chalk.red(err.message));

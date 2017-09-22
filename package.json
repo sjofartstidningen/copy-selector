@@ -7,9 +7,9 @@
   "author": "Adam Bergman <adam@fransvilhelm.com>",
   "license": "MIT",
   "scripts": {
-    "prebuild": "rimraf dist/*",
+    "prebuild": "rimraf copy-selector/*",
     "build:js": "rollup -c",
-    "build:css": "node-sass src/content.scss dist/content.css",
+    "build:css": "node-sass src/content.scss copy-selector/content.css",
     "build:manifest": "./scripts/build-manifest.js",
     "build": "NODE_ENV=production yarn run build:js && yarn run build:css && yarn run build:manifest",
     "build:js:watch": "rollup -c --watch",
