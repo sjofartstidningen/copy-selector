@@ -15,21 +15,41 @@
     "build:manifest": "./scripts/build-manifest.js",
     "build": "NODE_ENV=production ./scripts/build.sh",
     "build:js:watch": "rollup -c --watch",
-    "build:css:watch": "node-sass src/content.scss copy-selector/content.css -w"
+    "build:css:watch": "node-sass src/content.scss copy-selector/content.css -w",
+    "precommit": "lint-staged"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "chalk": "^2.1.0",
     "chrome-location": "^1.2.1",
+    "eslint": "^4.7.2",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-config-prettier": "^2.5.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.2",
     "node-sass": "^4.5.3",
+    "prettier": "^1.7.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.2.1",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^2.0.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.scss": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
