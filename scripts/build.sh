@@ -8,6 +8,4 @@ set -e
 ./scripts/build-icons.js
 ./scripts/build-manifest.js
 
-./node_modules/.bin/crx pack copy-selector/
-
 echo "Build done"
