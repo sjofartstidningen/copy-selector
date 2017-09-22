@@ -20,12 +20,12 @@ export default class Selection {
       this.el.style.width = `${box.width}px`;
       this.el.style.height = `${box.height}px`;
     }
-  }
+  };
 
   hide = () => {
     if (this.el != null) {
       removeClass(this.el, 'show');
       addClass(this.el, 'hidden');
     }
-  }
+  };
 }

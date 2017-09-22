@@ -23,5 +23,5 @@ export default class Messanger {
         addClass(this.el, 'hidden');
       }, 3000);
     }
-  }
+  };
 }

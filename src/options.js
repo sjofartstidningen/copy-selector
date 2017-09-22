@@ -5,18 +5,21 @@ function saveOptions() {
     const status = document.getElementById('cc-status');
     status.textContent = '(options saved)';
 
-    setTimeout(function() {
+    setTimeout(() => {
       status.textContent = '';
     }, 1000);
   });
 }
 
 function restoreOptions() {
-  chrome.storage.sync.get({
-    selector: process.env.SELECTOR,
-  }, ({ selector }) => {
-    document.getElementById('cc-selector').value = selector;
-  });
+  chrome.storage.sync.get(
+    {
+      selector: process.env.SELECTOR,
+    },
+    ({ selector }) => {
+      document.getElementById('cc-selector').value = selector;
+    },
+  );
 }
 
 document.addEventListener('DOMContentLoaded', restoreOptions);

@@ -7,7 +7,7 @@ const createSvg = () => {
   svg.setAttribute('viewBox', '0 0 24 24');
 
   return svg;
-}
+};
 
 const createRect = () => {
   const rect = createSvgElement('rect', 'icon-rect');
@@ -19,14 +19,17 @@ const createRect = () => {
   rect.setAttribute('ry', 2);
 
   return rect;
-}
+};
 
 const createPath = () => {
   const path = createSvgElement('path', 'icon-path');
-  path.setAttribute('d', 'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1');
+  path.setAttribute(
+    'd',
+    'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1',
+  );
 
   return path;
-}
+};
 
 export default () => {
   const svg = createSvg();

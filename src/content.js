@@ -41,7 +41,6 @@ const onClick = async () => {
 
     document.body.removeChild(textarea);
   } catch (e) {
-    console.error(e);
     window.requestAnimationFrame(() => {
       messenger.show('An error occured, see log', 'warning');
     });
