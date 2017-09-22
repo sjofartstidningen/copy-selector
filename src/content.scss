@@ -2,13 +2,16 @@
   --color-black: #000;
   --color-white: #fff;
   --color-warning: #f00;
+  --color-selection: #0097e5;
+  --color-selection-transparent: rgba(0, 151, 229, 0.2);
 }
 
 .cc-container,
 .cc-button,
 .cc-icon,
 .cc-message,
-.cc-textarea-hidden {
+.cc-textarea-hidden,
+.cc-selection {
   box-sizing: border-box;
 }
 
@@ -41,6 +44,7 @@
   font-size: 1em;
   z-index: 1;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  will-change: color, background-color;
 
   .cc-icon {
     display: block;
@@ -51,6 +55,7 @@
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
+    will-change: stroke;
   }
 
   &:hover {
@@ -70,6 +75,7 @@
   color: var(--color-white);
   background-color: var(--bg-color);
   transition: all 0.3s ease-in-out;
+  will-change: color, background-color;
   z-index: 0;
 
   &::before {
@@ -104,4 +110,21 @@
   top: 0;
   left: 0;
   transform: translateX(-200%);
+}
+
+.cc-selection {
+  position: absolute;
+  border: 1px solid var(--color-selection);
+  border-radius: 0.1rem;
+  background-color: var(--color-selection-transparent);
+  will-change: opacity, background-color;
+  transition: opacity 0.3s ease-in-out;
+
+  &.cc-hidden {
+    opacity: 0;
+  }
+
+  &.cc-show {
+    opacity: 1;
+  }
 }
