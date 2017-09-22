@@ -13,7 +13,7 @@
     "build:manifest": "./scripts/build-manifest.js",
     "build": "NODE_ENV=production yarn run build:js && yarn run build:css && yarn run build:manifest",
     "build:js:watch": "rollup -c --watch",
-    "build:css:watch": "node-sass src/content.scss dist/content.css -w"
+    "build:css:watch": "node-sass src/content.scss copy-selector/content.css -w"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
