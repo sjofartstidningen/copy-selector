@@ -8,4 +8,4 @@ set -e
 ./scripts/build-icons.js
 ./scripts/build-manifest.js
 
-echo "Build done"
+echo "Build done. Now put your key.pem file inside copy-selector/, zip it, and upload it!"
