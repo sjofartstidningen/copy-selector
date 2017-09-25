@@ -9,7 +9,7 @@
   "scripts": {
     "prebuild": "rimraf copy-selector/*",
     "build:js": "rollup -c",
-    "build:css": "node-sass src/content.scss copy-selector/content.css",
+    "build:css": "node sass.config.js",
     "build:html": "./scripts/build-html.js",
     "build:icons": "./scripts/build-icons.js",
     "build:manifest": "./scripts/build-manifest.js",
