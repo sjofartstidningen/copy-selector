@@ -9,7 +9,7 @@
   "scripts": {
     "prebuild": "rimraf copy-selector/*",
     "build:js": "rollup -c",
-    "build:css": "node sass.config.js",
+    "build:css": "./scripts/build-css.js",
     "build:html": "./scripts/build-html.js",
     "build:icons": "./scripts/build-icons.js",
     "build:manifest": "./scripts/build-manifest.js",
@@ -24,6 +24,7 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
     "chalk": "^2.1.0",
     "eslint": "^4.6.0",
     "eslint-config-sjofartstidningen": "^0.1.2",

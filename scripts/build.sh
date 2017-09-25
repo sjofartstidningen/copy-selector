@@ -3,7 +3,7 @@
 set -e
 
 ./node_modules/.bin/rollup -c
-node sass.config.js
+./scripts/build-css.js
 ./scripts/build-html.js
 ./scripts/build-icons.js
 ./scripts/build-manifest.js
