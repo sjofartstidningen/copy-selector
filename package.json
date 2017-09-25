@@ -7,7 +7,7 @@
   "author": "Adam Bergman <adam@fransvilhelm.com>",
   "license": "MIT",
   "scripts": {
-    "prebuild": "rimraf copy-selector/*",
+    "prebuild": "rimraf copy-selector/* copy-selector.zip",
     "build:js": "rollup -c",
     "build:css": "./scripts/build-css.js",
     "build:html": "./scripts/build-html.js",
@@ -19,6 +19,7 @@
     "precommit": "lint-staged"
   },
   "devDependencies": {
+    "adm-zip": "^0.4.7",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-plugin-external-helpers": "^6.22.0",

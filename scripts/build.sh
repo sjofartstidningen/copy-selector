@@ -7,5 +7,6 @@ set -e
 ./scripts/build-html.js
 ./scripts/build-icons.js
 ./scripts/build-manifest.js
+./scripts/build-zip.js
 
-echo "Build done. Now put your key.pem file inside copy-selector/, zip it, and upload it!"
+echo "Build done. copy-selector.zip is ready to be uploaded!"
