@@ -1,16 +1,16 @@
 import createElement from './lib/createElement';
 import createIcon from './lib/createIcon';
-import Messanger from './lib/Messanger';
+import Messenger from './lib/Messenger';
 import Selection from './lib/Selection';
 import * as chromeSync from './lib/chromeSync';
+import copy from './lib/copy';
 
 const createContainer = () => createElement('div', 'container');
 const createButton = () => createElement('button', 'button');
 const createMessage = () => createElement('span', 'message');
 const createSelection = () => createElement('div', 'selection');
-const createTextarea = () => createElement('textarea', 'textarea-hidden');
 
-const messenger = new Messanger();
+const messenger = new Messenger();
 const selectionOverlay = new Selection();
 
 const getElToCopy = async () => {
@@ -23,43 +23,24 @@ const onClick = async () => {
     const elToCopy = await getElToCopy();
     if (!elToCopy) throw new Error('Could not find element to copy');
 
-    const textarea = createTextarea();
-    const html = elToCopy.outerHTML;
+    const html = elToCopy.outerHTML.trim();
+    await copy(html);
 
-    textarea.value = html.trim();
-    document.body.append(textarea);
-    textarea.select();
-
-    const success = document.execCommand('Copy');
-
-    window.requestAnimationFrame(() => {
-      messenger.show(
-        success ? 'Copied' : 'Could not copy',
-        success ? 'success' : 'warning',
-      );
-    });
-
-    document.body.removeChild(textarea);
+    messenger.show('Copied', 'success');
   } catch (e) {
-    window.requestAnimationFrame(() => {
-      messenger.show('An error occured, see log', 'warning');
-    });
+    messenger.show(e.message, 'warning');
   }
 };
 
 const onEnter = async () => {
   const elToCopy = await getElToCopy();
 
-  window.requestAnimationFrame(() => {
-    const box = elToCopy.getBoundingClientRect();
-    selectionOverlay.show(box);
-  });
+  const box = elToCopy.getBoundingClientRect();
+  selectionOverlay.show(box);
 };
 
 const onLeave = () => {
-  window.requestAnimationFrame(() => {
-    selectionOverlay.hide();
-  });
+  selectionOverlay.hide();
 };
 
 function init() {
